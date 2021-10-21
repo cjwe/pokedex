@@ -28,7 +28,7 @@ let pokemonList = [
 //lists Pokemon name with height & highlights small Pokemon
 for (let i=0; i < pokemonList.length; i++) {
   document.write(pokemonList[i].name + ` (height: ${pokemonList[i].height}) `);
-  if (pokemonList[i].height <= .3)
-  document.write(' - Wow! That\'s a cute, little Pokemon! ');
+  if (pokemonList[i].height >= .7)
+  document.write(' - Wow! That\'s big! ');
   document.write('<br>');
   }
