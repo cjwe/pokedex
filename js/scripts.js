@@ -1,4 +1,4 @@
-//IIFE
+// IIFE
 let pokemonRepository = (function() {
   let pokemonList = [
     {
@@ -29,7 +29,16 @@ let pokemonRepository = (function() {
   ];
 
   function add(pokemon) {
-    pokemonList.push(pokemon);
+    if (
+      typeof pokemon === 'object' &&
+      typeof pokemon !== null &&
+      console.log(Object.keys(pokemon)) === console.log(Object.keys(pokemonList[0]))
+    ){
+      pokemonList.push(pokemon);
+      console.log("Object.keys requirement passed.")
+    }else{
+      console.log("Error: Please follow template to add Pokemon.")
+    }
   }
 
   function getAll() {
@@ -41,19 +50,25 @@ let pokemonRepository = (function() {
     getAll: getAll
   };
 })();
-//adds new Pokemon to array
+
+// adds new Pokemon to array as object - use {name: '', height: , types:[]}
 pokemonRepository.add({name: 'Jigglypuff', height: .5, types: ['fariy' , 'normal']});
 
-//console logs complete list of Pokemon
-console.log(pokemonRepository.getAll() );
+// console logs complete list of Pokemon
+console.log(pokemonRepository.getAll());
 
-//function to display Pokemon name with height & highlight large Pokemon
+// function to display Pokemon name with height & highlight large Pokemon
 function displayPokemon(pokemon) {
   document.write(pokemon.name + ` (height: ${pokemon.height}) `);
   if (pokemon.height >= .6)
   document.write(' - Wow! That\'s big!');
   document.write('<br>');
-  }
+}
 
-//displays Pokemon name with height & highlights large Pokemon
+// displays Pokemon name with height & highlights large Pokemon
 pokemonRepository.getAll().forEach(displayPokemon);
+
+// search function
+const filterArray=pokemonRepository.getAll().filter(word => word.name === "Bulbasaur")
+
+console.log(filterArray);
