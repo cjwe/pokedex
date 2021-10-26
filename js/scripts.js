@@ -25,10 +25,14 @@ let pokemonList = [
     types: ['bug' , 'poison']
   },
 ];
-//lists Pokemon name with height & highlights small Pokemon
-for (let i=0; i < pokemonList.length; i++) {
-  document.write(pokemonList[i].name + ` (height: ${pokemonList[i].height}) `);
-  if (pokemonList[i].height >= .7)
+
+//function to display Pokemon name with height & highlight large Pokemon
+function displayPokemon(pokemon) {
+  document.write(pokemon.name + ` (height: ${pokemon.height}) `);
+  if (pokemon.height >= .6)
   document.write(' - Wow! That\'s big!');
   document.write('<br>');
-  }
+}
+
+//lists Pokemon name with height & highlights large Pokemon
+pokemonList.forEach(displayPokemon);
