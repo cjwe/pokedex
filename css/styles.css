@@ -1,7 +1,58 @@
-html {
+
+:root {
+  --color-red: #F05454;
+  --color-yellow: #FFD369;
+  --color-lightgrey: #9D9D9D;
+  --color-darkgrey: #393E46;
+  --color-black: #222831;
+  --color-white: #EEEEEE;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
   font-family: 'VT323', monospace;
+  font-weight: 400;
+  color: var(--color-white);
+  font-size: 16px;
+  background-color: var(--color-black);
+  transition: width 2s;
 }
 
 h1 {
+  background-color: inherit;
+  color: var(--color-yellow);
+  font-size: 3rem;
+  line-height: 1rem;
+  margin-left: 30px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.button-class {
   font-family: 'Roboto', sans-serif;
+  display: inline-block;
+  font-size: 1rem;
+  color: var(--color-black);
+  background-color: var(--color-white);
+  border: none;
+  border-radius: 5px;
+  list-style-type: none;
+  width: 200px;
+  margin: 5px;
+  padding: 20px;
+  cursor: pointer;
+  transition: width .5s;
+}
+
+.button-class:hover , .button-class:active {
+  color: var(--color-white);
+  background-color: var(--color-darkgrey);
+  width: 215px;
 }

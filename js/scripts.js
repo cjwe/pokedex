@@ -32,7 +32,7 @@ let pokemonRepository = (function() {
     if (
       typeof pokemon === 'object' &&
       typeof pokemon !== null &&
-      console.log(Object.keys(pokemon)) === console.log(Object.keys(pokemonList[0]))
+      'name','height','types' in pokemon
     ){
       pokemonList.push(pokemon);
       console.log("Object.keys requirement passed.")
@@ -45,30 +45,40 @@ let pokemonRepository = (function() {
     return pokemonList;
   }
 
+  function addListItem(pokemon) {
+    let list = document.querySelector('.pokemon-list');
+    let listPokemon = document.createElement('li');
+    let button = document.createElement('button');
+    button.innerText = (pokemon.name);
+    button.classList.add('button-class');
+    listPokemon.appendChild(button);
+    list.appendChild(listPokemon);
+    buttonListener(button, pokemon);
+  }
+
+  function buttonListener(button, pokemon) {
+    document.querySelector('button');
+    button.addEventListener('click', function (event){
+      showDetails(pokemon);
+    });
+  }
+
+  function showDetails(pokemon) {
+    console.log(pokemon);
+  }
+
   return {
     add: add,
-    getAll: getAll
+    getAll: getAll,
+    addListItem: addListItem
   };
 })();
 
-// adds new Pokemon to array as object - use {name: '', height: , types:[]}
-pokemonRepository.add({name: 'Jigglypuff', height: .5, types: ['fariy' , 'normal']});
+// add pokemon to array
+pokemonRepository.add({ name: 'Weedle', height: .3, types: ['bug' , 'poison']});
 
-// console logs complete list of Pokemon
-console.log(pokemonRepository.getAll());
 
-// function to display Pokemon name with height & highlight large Pokemon
-function displayPokemon(pokemon) {
-  document.write(pokemon.name + ` (height: ${pokemon.height}) `);
-  if (pokemon.height >= .6)
-  document.write(' - Wow! That\'s big!');
-  document.write('<br>');
-}
-
-// displays Pokemon name with height & highlights large Pokemon
-pokemonRepository.getAll().forEach(displayPokemon);
-
-// search function
-const filterArray=pokemonRepository.getAll().filter(word => word.name === "Bulbasaur")
-
-console.log(filterArray);
+// displays Pokemon name as button
+pokemonRepository.getAll().forEach(function (pokemon){
+  pokemonRepository.addListItem(pokemon);
+});
