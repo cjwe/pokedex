@@ -22,37 +22,49 @@ body {
 }
 
 h1 {
-  background-color: inherit;
   color: var(--color-yellow);
   font-size: 3rem;
   line-height: 1rem;
-  margin-left: 30px;
+  text-align: center;
 }
 
 ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
   list-style-type: none;
-  margin: 0;
   padding: 0;
 }
 
 .button-class {
   font-family: 'Roboto', sans-serif;
-  display: inline-block;
   font-size: 1rem;
   color: var(--color-black);
   background-color: var(--color-white);
   border: none;
   border-radius: 5px;
   list-style-type: none;
+  margin: 15px;
   width: 200px;
-  margin: 5px;
   padding: 20px;
   cursor: pointer;
-  transition: width .5s;
+  transition: transform 250ms;
+  will-change: transform;
 }
 
 .button-class:hover , .button-class:active {
   color: var(--color-white);
   background-color: var(--color-darkgrey);
-  width: 215px;
+  transition: transform 125ms;
+  transform: translateY(-10px);
+  box-shadow: 0px 13px 20px 5px rgba(0,0,0,0.35);
+}
+
+@media all and (max-width: 500px) {
+  .button-class {
+    width: 75vw;
+  }
 }
