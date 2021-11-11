@@ -53,6 +53,10 @@ h2 {
   margin-left: 20px;
 }
 
+input {
+  min-width: 200px;
+}
+
 .pokemon-list {
   display: flex;
   flex-wrap: wrap;
@@ -102,4 +106,8 @@ button.btn.btn-secondary:hover,  button.btn.btn-secondary:active{
   display: flex;
   flex-wrap: wrap;
   width: 200px;
+}
+
+.hide {
+  display: none;
 }

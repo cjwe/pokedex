@@ -18,15 +18,25 @@
 </head>
 
 <body>
-  <header>
-    <nav class="navbar navbar-dark bg-dark">
-    		<a class="navbar-brand" href="#"><img src="img/pikachu.svg" alt="Image of Pikachu"/></a>
+  <header id="header">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    		<a class="navbar-brand" href="#header">
+          <img src="img/pikachu.svg" alt="Image of Pikachu"/></a>
         <h1>Pokédex</h1>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+          <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" id="searchBar" type="search" placeholder="Search for Pokemon..." aria-label="Search">
+          </form>
+        </div>
     </nav>
   </header>
 
   <main>
-  <ul class="pokemon-list list-group"></ul>
+  <div id="no-pokemon" ></div>
+  <ul class="pokemon-list list-group" id="pokemonList"></ul>
 
   <!-- Modal -->
   <div class="modal fade" id="pokemonModal" tabindex="-1" role="dialog" aria-labelledby="pokemonModalLabel" aria-hidden="true">

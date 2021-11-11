@@ -1,5 +1,5 @@
 // start IIFE
-let pokemonRepository = (function() {
+let pokemonRepository = (function () {
   let pokemonList = [];
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
@@ -9,9 +9,9 @@ let pokemonRepository = (function() {
       typeof pokemon === 'object' &&
       typeof pokemon !== null &&
       'name' in pokemon
-    ){
+    ) {
       pokemonList.push(pokemon);
-    }else{
+    } else {
       console.log("Error invalid pokemon added.")
     }
   }
@@ -49,7 +49,7 @@ let pokemonRepository = (function() {
 
   // Displays details from loadDetails function
   function showDetails(pokemon) {
-    loadDetails(pokemon).then(function (){
+    loadDetails(pokemon).then(function () {
       showModal(pokemon);
     });
   }
@@ -69,7 +69,7 @@ let pokemonRepository = (function() {
     listPokemon.appendChild(button);
     list.appendChild(listPokemon);
 
-    button.addEventListener('click', function(event){
+    button.addEventListener('click', function (event) {
       showDetails(pokemon);
     });
   }
@@ -98,7 +98,7 @@ let pokemonRepository = (function() {
     // Type element for modal
     let mapPokemonTypes = pokemon.types;
     // Map pokemon types
-    let map = mapPokemonTypes.map(function(pokemon){
+    let map = mapPokemonTypes.map(function (pokemon) {
       return pokemon.type.name;
     });
     let typeElement = document.createElement('p');
@@ -106,7 +106,7 @@ let pokemonRepository = (function() {
     pokemon.types.forEach(item => {
       if (pokemon.types.length === 1) {
         typeElement.innerText = ('Type: ') + map;
-      }else{
+      } else {
         typeElement.innerText = ('Types: ') + map.join(', ');
       }
     });
@@ -117,6 +117,26 @@ let pokemonRepository = (function() {
     modalBody.append(typeElement);
   }
   // end modal element
+
+  // search function 
+  let filter = document.querySelector('#searchBar');
+  let noResultsDiv = document.querySelector('.hide');
+
+  filter.addEventListener('input', ()=> {
+    let pokemon = document.querySelectorAll('.group-list-item');
+    let value = filter.value.toLowerCase();
+    pokemon.forEach(function(pokemon) {
+      if (pokemon.innerText.toLowerCase().indexOf(value) > -1) {
+        pokemon.style.display = '';
+      } else {
+        pokemon.style.display = 'none';
+        let noResults = document.createElement('h2');
+        noResults.innerText = 'No Pokemon Found.';
+      }
+    });
+    noResultsDiv.appendChild(noResults);
+  });
+
 
   // returns list of pokemon
   function getAll() {
@@ -135,8 +155,8 @@ let pokemonRepository = (function() {
 // end IIFE
 
 // loads pokemon buttons
-pokemonRepository.loadList().then(function() {
-  pokemonRepository.getAll().forEach(function(pokemon){
+pokemonRepository.loadList().then(function () {
+  pokemonRepository.getAll().forEach(function (pokemon) {
     pokemonRepository.addListItem(pokemon);
   });
 });
