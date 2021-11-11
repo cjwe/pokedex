@@ -4,8 +4,8 @@ To build a small web application with HTML, CSS, and primarily JavaScript that l
 
 #### Features 
 - Loads data from external API
-- View a list of 150 Pokémon
-- User action prompts modal with details over Pokémon item. 
+- Displays a list of 150 Pokémon
+- User action prompts modal with details about Pokémon item. 
 
 #### Technologies Used 
 - HTML5, CSS, JS
