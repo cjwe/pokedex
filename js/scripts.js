@@ -95,6 +95,7 @@ let pokemonRepository = (function () {
     // Height element for modal
     let heightElement = document.createElement('p');
     heightElement.innerHTML = ('Height: ') + pokemon.height + ' m';
+    modalBody.append(heightElement);
 
     // Type element for modal
     // Map of pokemon types
@@ -125,9 +126,6 @@ let pokemonRepository = (function () {
         modalBody.appendChild(typeSpanElement2);
       }
     });
-    let contentDiv = document.createElement('div');
-    contentDiv.append(heightElement);
-    contentDiv.append(typeElement);
 
   }
   // end modal element
