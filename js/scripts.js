@@ -61,14 +61,12 @@ let pokemonRepository = (function () {
     let button = document.createElement('button');
 
     listPokemon.classList.add('group-list-item');
-    button.classList.add('btn');
+    button.classList.add('btn', );
     button.innerText = pokemon.name;
     button.setAttribute('data-toggle', 'modal');
     button.setAttribute('data-target', '#pokemonModal');
-
     listPokemon.appendChild(button);
     list.appendChild(listPokemon);
-
     button.addEventListener('click', function (event) {
       showDetails(pokemon);
     });
@@ -79,6 +77,7 @@ let pokemonRepository = (function () {
     let modalTitle = document.querySelector(".modal-title");
     let modalBody = document.querySelector(".modal-body");
     let modalHeader = $(".modal-header");
+
     //Clear existing modal content
     modalTitle.innerHTML = '';
     modalBody.innerHTML = '';
@@ -86,35 +85,50 @@ let pokemonRepository = (function () {
     // Title element for modalBody
     let titleElement = document.createElement('h2');
     titleElement.innerHTML = pokemon.name;
+    modalTitle.append(titleElement);
 
     // Image element for modal
     let imgElement = document.createElement('img');
     imgElement.src = pokemon.imageUrl;
+    modalBody.append(imgElement);
 
     // Height element for modal
     let heightElement = document.createElement('p');
-    heightElement.innerHTML = ('Height: ') + pokemon.height;
+    heightElement.innerHTML = ('Height: ') + pokemon.height + ' m';
 
     // Type element for modal
+    // Map of pokemon types
     let mapPokemonTypes = pokemon.types;
-    // Map pokemon types
     let map = mapPokemonTypes.map(function (pokemon) {
       return pokemon.type.name;
     });
+
     let typeElement = document.createElement('p');
+    modalBody.append(typeElement);
+    let typeSpanElement1 = document.createElement('span');
+    let typeSpanElement2 = document.createElement('span');
+
     // Type element forEach loop
     pokemon.types.forEach(item => {
       if (pokemon.types.length === 1) {
-        typeElement.innerText = ('Type: ') + map;
+        typeElement.innerText = ('Type: ')
+        typeSpanElement1.classList.add(map);
+        typeSpanElement1.innerText = map;
+        modalBody.appendChild(typeSpanElement1);
       } else {
-        typeElement.innerText = ('Types: ') + map.join(', ');
+        typeElement.innerText = ('Types: ');
+        typeSpanElement1.classList.add(map[0]);
+        typeSpanElement1.innerText = map[0];
+        typeSpanElement2.classList.add(map[1]);
+        typeSpanElement2.innerText = map[1];
+        modalBody.appendChild(typeSpanElement1);
+        modalBody.appendChild(typeSpanElement2);
       }
     });
+    let contentDiv = document.createElement('div');
+    contentDiv.append(heightElement);
+    contentDiv.append(typeElement);
 
-    modalTitle.append(titleElement);
-    modalBody.append(imgElement);
-    modalBody.append(heightElement);
-    modalBody.append(typeElement);
   }
   // end modal element
 
@@ -136,6 +150,7 @@ let pokemonRepository = (function () {
     });
     noResultsDiv.appendChild(noResults);
   });
+
 
 
   // returns list of pokemon
