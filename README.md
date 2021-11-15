@@ -5,7 +5,7 @@ To build a small web application with HTML, CSS, and primarily JavaScript that l
 #### Features 
 - Loads data from external API ([PokéAPI](https://pokeapi.co/))
 - View a list of 150 Pokémon
-- User action prompts modal with details over Pokémon item. 
+- User action prompts a modal with details over Pokémon item. 
 
 #### Technologies Used 
 - HTML5, CSS, JS
