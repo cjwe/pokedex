@@ -1,4 +1,3 @@
-
 :root {
   --color-red: #F05454;
   --color-yellow: #FFD369;
@@ -17,19 +16,6 @@ img {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
-}
-
-.modal-content{
-  background-color: var(--color-white);
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  border-radius: 20px;
-  outline: 0;
-}
-
-.modal-body {
-  text-align: center;
 }
 
 ul {
@@ -66,8 +52,21 @@ h2 {
   margin-left: 20px;
 }
 
+h3 {
+  color: var(--color-white);
+  margin-left: 20px;
+}
+
 input {
   min-width: 200px;
+}
+
+main {
+  margin-top: 75px;
+}
+
+footer p{
+  color: var(--color-white);
 }
 
 .navbar-dark .navbar-toggler {
@@ -80,6 +79,59 @@ input {
   list-style: none;
 }
 
+.modal-content {
+  background-color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 20px;
+  outline: 0;
+}
+
+.modal-body {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  text-align: center;
+  overflow: hidden;
+}
+
+.title-div {
+  justify-self: center;
+}
+
+.title-div h2{
+  position: relative;
+  z-index: 2;
+  text-shadow: 2px 2px var(--color-white);
+}
+
+.title-div img {
+  width: 200px;
+  height: auto;
+  margin: -25px;
+  position: relative;
+  z-index: 1;
+  animation-name: bounce;
+  animation-duration: 4s; 
+  animation-iteration-count: infinite;
+  animation-delay: 1s;
+  animation-name: bounce;
+}
+
+@keyframes bounce {
+  0%   { transform: scale(1,1)      translateY(0); }
+  10%  { transform: scale(1.1,.9)   translateY(0); }
+  30%  { transform: scale(.9,1.1)   translateY(-30px); }
+  50%  { transform: scale(1.05,.95) translateY(0); }
+  57%  { transform: scale(1,1)      translateY(-2px); }
+  64%  { transform: scale(1,1)      translateY(0); }
+  100% { transform: scale(1,1)      translateY(0); }
+}
+
+.info-div {
+  align-self: center;
+}
+
 .btn {
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
@@ -87,7 +139,7 @@ input {
   text-transform: capitalize;
   background-color: var(--color-white);
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
   list-style-type: none;
   margin: 15px;
   width: 200px;
@@ -97,27 +149,91 @@ input {
   will-change: transform;
 }
 
-.btn:hover , .btn:active {
+.btn:hover,
+.btn:active {
   color: var(--color-white);
   background-color: var(--color-darkgrey);
   transition: transform 125ms;
   transform: translateY(-10px);
-  box-shadow: 0px 13px 20px 5px rgba(0,0,0,0.35);
+  box-shadow: 0px 13px 20px 5px rgba(0, 0, 0, 0.35);
 }
 
 button.btn.btn-secondary {
   background-color: var(--color-yellow);
   box-shadow: none;
+  transform: none;
 }
 
-button.btn.btn-secondary:hover,  button.btn.btn-secondary:active{
-  background-color: var(--color-yellow);
+button.btn.btn-secondary:hover,
+button.btn.btn-secondary:active {
+  background-color: var(--color-lightgrey);
   color: var(--color-black);
 }
 
-.hide {
-  display: none;
+.img-wrap {
+  display: flex;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  align-items: center;
+  margin: 0 auto;
 }
+
+.img-wrap img {
+  width: max-content;
+  height: auto;
+  margin: 0 auto;
+}
+
+.loader {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: var(--color-black);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.loader.show {
+  display: flex;
+}
+
+.loader-text{
+  color:var(--color-white)
+}
+
+.no-results{
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.no-results.show{
+  display: flex;
+}
+
+.no-results__text {
+  color: var(--color-white);
+}
+
+.credit {
+  max-width: 200px;
+}
+
 
 span {
   border-radius: 5px;
@@ -198,3 +314,15 @@ span {
 .poison {
   background-color: #85409d;
 }
+
+@media (max-width: 569px) { 
+  main {
+    margin-top: 130px;
+  }
+ }
+
+@media (max-width: 385px) { 
+  main {
+    margin-top: 178px;
+  }
+ }
