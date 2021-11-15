@@ -19,15 +19,15 @@ let pokemonRepository = (function () {
   // Displays loading message while loading in Pokémon data.
   let loaderDiv = document.querySelector('.loader');
 
-    const showLoadingMessage = () =>{
-        loaderDiv.classList.add('show')
-    }
+  const showLoadingMessage = () => {
+    loaderDiv.classList.add('show')
+  }
 
-    const hideLoadingMessage = () =>{
-        setTimeout(()=>{
-            loaderDiv.classList.remove('show');
-        }, 1000);
-    }
+  const hideLoadingMessage = () => {
+    setTimeout(() => {
+      loaderDiv.classList.remove('show');
+    }, 1000);
+  }
 
   // Fetches Pokémon from API
   function loadList() {
@@ -176,7 +176,7 @@ let pokemonRepository = (function () {
   // search function 
   let filter = document.querySelector('#searchBar');
   let noResults = document.createElement('h3');
-    noResults.innerText = 'No Pokémon found.';
+  noResults.innerText = 'No Pokémon found.';
 
   filter.addEventListener('input', () => {
 
@@ -186,7 +186,7 @@ let pokemonRepository = (function () {
     listItems = list.getElementsByTagName('li');
     let isPokemonFound = false; // Help to control the no result message 
 
-    for (let i = 0;  i < listItems.length; i++) {
+    for (let i = 0; i < listItems.length; i++) {
       let button = listItems[i].getElementsByTagName('button')[0];
       let pokemon = button.textContent || button.innerText;
 
