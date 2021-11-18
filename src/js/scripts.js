@@ -207,19 +207,6 @@ let pokemonRepository = (function () {
     }
   });
 
-  // Type color 
-
-  function findType(pokemon) {
-    pokemon.types.forEach(pokemon => {
-      if (pokemon.types.length === 1) {
-        return map;
-      } else {
-        return pokemon.type.name[0], [1];
-      }
-    });
-
-  }
-
   // returns list of pokemon
   function getAll() {
     return pokemonList;
